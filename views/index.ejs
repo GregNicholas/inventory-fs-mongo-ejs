@@ -5,21 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fullstack vanilla</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
     <h1>This is the home page!!!</h1>
     <form action="/new" method="POST">
-        <label for="nameInput">Input Name</label>
+        <label class="form-input" for="nameInput">Input Name</label>
         <input type="text" name="nameInput" required>
-        <label for="qtyInput">Input Quantity</label>
+        <label class="form-input" for="qtyInput">Input Quantity</label>
         <input type="number" name="qtyInput" value="0" min="0">
         <label for="description">Input Description</label>
-        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+        <textarea class="form-textarea" name="description" id="description" cols="30" rows="10"></textarea>
         <button type="submit">submit</button>
     </form>
     <ul>
-        <!-- will add ejs to display items -->
+        <% itemList.forEach(item => { %>
+            <li class="list-item" data-id=<%=item._id%>>
+                <div><%= item.nameInput %></div>
+                <div><%= item.qtyInput %></div>
+                <div><%= item.description %></div>
+                <a href="/edit/:id">Edit</a>
+                <a href="/delete/:id">Remove</a>
+            </li>
+        <% }) %> 
     </ul>
 </body>
 </html>

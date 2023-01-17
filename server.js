@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = 8000;
+const PORT = 2100;
 const mongoose = require("mongoose");
 require("dotenv").config();
 const homeRoutes = require("./routes/home");
@@ -18,6 +18,7 @@ app.set("view engine", "ejs");
 app.set(express.static("public"));
 // properly parse requests from forms
 app.use(express.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/public'));
 
 // todo - set routes
 app.use('/', homeRoutes);

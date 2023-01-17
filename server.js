@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const PORT = 8000;
 const mongoose = require("mongoose");
-require('dotenv').config();
+require("dotenv").config();
+const homeRoutes = require("./routes/home");
 
 // *Import functions/routes
 const connectDB = require("./config/database");
@@ -19,7 +20,8 @@ app.set(express.static("public"));
 app.use(express.urlencoded({extended: true}));
 
 // todo - set routes
-
+app.use('/', homeRoutes);
+// app.use('/new', homeRoutes);
 
 // todo - start server
 app.listen(PORT, () => console.log(`server started on port ${PORT}`))

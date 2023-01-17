@@ -2,11 +2,13 @@ const express = require("express");
 const app = express();
 const PORT = 8000;
 const mongoose = require("mongoose");
+require('dotenv').config();
 
-    // *Import functions/routes
+// *Import functions/routes
+const connectDB = require("./config/database");
 
-// todo - connect to database
-
+// connect to database
+connectDB();
 
 // set middleware
 // set view engine

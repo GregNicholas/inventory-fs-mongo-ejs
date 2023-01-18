@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fullstack vanilla</title>
+    <title>Fullstack Inventory</title>
     <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
@@ -24,8 +24,8 @@
                 <div><%= item.nameInput %></div>
                 <div><%= item.qtyInput %></div>
                 <div><%= item.description %></div>
-                <a href="/edit/:id">Edit</a>
-                <a href="/delete/:id">Remove</a>
+                <a href="/edit/<%=item._id%>">Edit</a>
+                <a href="/delete/<%=item._id%>">Remove</a>
             </li>
         <% }) %> 
     </ul>

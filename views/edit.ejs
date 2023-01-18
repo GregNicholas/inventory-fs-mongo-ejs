@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullstack Inventory</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+    <section>
+        <h1>Edit item</h1>
+    </section>
+    <section>
+        <ul>
+            <% itemList.forEach(item => { %>
+                <% if (item._id === item in list) {%>
+                <li class="list-item data-id=<%=item._id">>
+                    <form action="/edit/<%=item._id%>" method="POST">
+                        <label class="form-input" for="nameInput">Input Name</label>
+                        <input type="text" name="nameInput" value="<%= input.nameInput %>" required>
+                        <label class="form-input" for="qtyInput">Input Quantity</label>
+                        <input type="number" name="qtyInput" value="<%= input.qtyInput %>" min="0">
+                        <label for="description">Input Description</label>
+                        <textarea class="form-textarea" name="description" id="description" cols="30" rows="10"value="<%= input.description %>" ></textarea>
+                        <button type="submit">confirm</button>
+                        <a href="/">cancel</a>
+                    </form>
+                </li>
+                <% } else { %>
+                    <li class="list-item" data-id=<%=item._id%>>
+                        <div><%= item.nameInput %></div>
+                        <div><%= item.qtyInput %></div>
+                        <div><%= item.description %></div>
+                        <a href="/edit/<%=item._id%>">Edit</a>
+                        <a href="/delete/">Remove</a>
+                    </li>
+                <% } %>
+                
+            <% }) %> 
+        </ul>
+    </section>
+</body>
+</html>

@@ -4,6 +4,7 @@ const PORT = 2100;
 const mongoose = require("mongoose");
 require("dotenv").config();
 const homeRoutes = require("./routes/home");
+const editRoutes = require("./routes/edit");
 
 // *Import functions/routes
 const connectDB = require("./config/database");
@@ -21,8 +22,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 
 // todo - set routes
+app.use('/edit', editRoutes);
 app.use('/', homeRoutes);
-// app.use('/new', homeRoutes);
 
 // todo - start server
 app.listen(PORT, () => console.log(`server started on port ${PORT}`))

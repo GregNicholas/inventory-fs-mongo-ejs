@@ -14,7 +14,7 @@
     <section>
         <ul>
             <% itemList.forEach(item => { %>
-                <% if (item._id === item in list) {%>
+                <% if (item._id === itemId) { %>
                 <li class="list-item data-id=<%=item._id">>
                     <form action="/edit/<%=item._id%>" method="POST">
                         <label class="form-input" for="nameInput">Input Name</label>

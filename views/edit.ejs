@@ -8,21 +8,20 @@
     <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
-    <section>
-        <h1>Edit item</h1>
-    </section>
+    <h1>Edit item</h1>
     <section>
         <ul>
             <% itemList.forEach(item => { %>
-                <% if (item._id === itemId) { %>
-                <li class="list-item data-id=<%=item._id">>
-                    <form action="/edit/update/<%=item._id%>" method="POST">
+                <p><%= item._id %> <%= itemId %></p>
+                <% if (item._id == itemId) { %>
+                <li class="list-item">
+                    <form action="/edit/update/<%=item._id %>" method="POST">
                         <label class="form-input" for="nameInput">Input Name</label>
-                        <input type="text" name="nameInput" value="<%= input.nameInput %>" required>
+                        <input type="text" name="nameInput" value="<%= item.nameInput %>" required>
                         <label class="form-input" for="qtyInput">Input Quantity</label>
-                        <input type="number" name="qtyInput" value="<%= input.qtyInput %>" min="0">
+                        <input type="number" name="qtyInput" value="<%= item.qtyInput %>" min="0">
                         <label for="description">Input Description</label>
-                        <textarea class="form-textarea" name="description" id="description" cols="30" rows="10"value="<%= input.description %>" ></textarea>
+                        <textarea class="form-textarea" name="description" id="description" cols="30" rows="10" ><%= item.description %></textarea>
                         <button type="submit">confirm</button>
                         <a href="/">cancel</a>
                     </form>
@@ -33,12 +32,11 @@
                         <div><%= item.qtyInput %></div>
                         <div><%= item.description %></div>
                         <a href="/edit/<%=item._id%>">Edit</a>
-                        <a href="/delete/">Remove</a>
+                        <a href="/edit/delete/<%=item._id%>">Remove</a>
                     </li>
                 <% } %>
-                
             <% }) %> 
-        </ul>
+        </ul> 
     </section>
 </body>
 </html>

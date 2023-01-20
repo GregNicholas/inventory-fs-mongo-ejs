@@ -7,24 +7,29 @@ module.exports = {
             const items = await Items.find()
             res.render("edit.ejs", {itemList: items, itemId: id})
         }catch(err) {
-            return res.status(500).send(err)
+            if(err) return res.status(500).send(err)
+            res.redirect("/")
         }
     },
     deleteItem: async (req, res) => {
+        const id = req.params.id
         try{
-            await Items.findOneAndDelete({_id:req.params.id})
-            res.redirect("/")
+            await Items.findByIdAndDelete(id)
+            res.redirect("back")
         }catch(err){
-            console.log(err)
+            if(err) return res.status(500).send(err)
+            res.redirect("/")
         }
     },
     updateItem: async (req, res) => {
         console.log(req.body)
+        const id = req.params.id
         try{
-            await Items.findOneAndUpdate({_id:req.params.id}, req.body)
+            await Items.findByIdAndUpdate(id, req.body)
             res.redirect("/")
         }catch(err){
-            console.log(err)
+            if(err) return res.status(500).send(err)
+            res.redirect("/")
         }
     }
 }

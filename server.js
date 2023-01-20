@@ -9,9 +9,6 @@ const editRoutes = require("./routes/edit");
 // *Import functions/routes
 const connectDB = require("./config/database");
 
-// connect to database
-connectDB();
-
 // set middleware
 // set view engine
 app.set("view engine", "ejs");
@@ -25,5 +22,8 @@ app.use(express.urlencoded({extended: true}));
 app.use('/edit', editRoutes);
 app.use('/', homeRoutes);
 
-// todo - start server
-app.listen(PORT, () => console.log(`server started on port ${PORT}`))
+// connect to database
+// start server - this is hear for hosting on cyclic, so that the database is connected first
+connectDB().then(() => {
+    app.listen(PORT, () => console.log(`server started on port ${PORT}`))
+})

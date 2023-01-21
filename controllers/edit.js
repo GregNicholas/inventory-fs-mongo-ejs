@@ -4,8 +4,8 @@ module.exports = {
     getEdit: async (req, res) => {
         const id = req.params.id;
         try {
-            const items = await Items.find()
-            res.render("edit.ejs", {itemList: items, itemId: id})
+            const itemToEdit = await Items.findById(id)
+            res.render("edit.ejs", {item: itemToEdit, itemId: id})
         }catch(err) {
             if(err) return res.status(500).send(err)
             res.redirect("/")

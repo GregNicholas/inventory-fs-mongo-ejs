@@ -11,31 +11,18 @@
     <h1>Edit item</h1>
     <section>
         <ul>
-            <% itemList.forEach(item => { %>
-                <p><%= item._id %> <%= itemId %></p>
-                <% if (item._id == itemId) { %>
-                <li class="list-item">
-                    <form action="/edit/update/<%=item._id %>" method="POST">
-                        <label class="form-input" for="nameInput">Input Name</label>
-                        <input type="text" name="nameInput" value="<%= item.nameInput %>" required>
-                        <label class="form-input" for="qtyInput">Input Quantity</label>
-                        <input type="number" name="qtyInput" value="<%= item.qtyInput %>" min="0">
-                        <label for="description">Input Description</label>
-                        <textarea class="form-textarea" name="description" id="description" cols="30" rows="10" ><%= item.description %></textarea>
-                        <button type="submit">confirm</button>
-                        <a href="/">cancel</a>
-                    </form>
-                </li>
-                <% } else { %>
-                    <li class="list-item" data-id=<%=item._id%>>
-                        <div><%= item.nameInput %></div>
-                        <div><%= item.qtyInput %></div>
-                        <div><%= item.description %></div>
-                        <a href="/edit/<%=item._id%>">Edit</a>
-                        <a href="/edit/delete/<%=item._id%>">Remove</a>
-                    </li>
-                <% } %>
-            <% }) %> 
+            <li class="list-item">
+                <form action="/edit/update/<%=item._id %>" method="POST">
+                    <label for="nameInput">Input Name</label>
+                    <input  class="form-input"type="text" name="nameInput" value="<%= item.nameInput %>" required>
+                    <label for="qtyInput">Input Quantity</label>
+                    <input class="form-input" type="number" name="qtyInput" value="<%= item.qtyInput %>" min="0">
+                    <label for="description">Input Description</label>
+                    <textarea class="form-textarea" name="description" id="description" cols="30" rows="10" ><%= item.description %></textarea>
+                    <button class="button" type="submit">confirm</button>
+                    <a href="/">cancel</a>
+                </form>
+            </li>
         </ul> 
     </section>
 </body>

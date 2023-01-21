@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
-    <h1>This is the home page!!!</h1>
+    <h1>Inventory Homepage</h1>
     <form action="/new" method="POST">
-        <label class="form-input" for="nameInput">Input Name</label>
-        <input type="text" name="nameInput" required>
-        <label class="form-input" for="qtyInput">Input Quantity</label>
-        <input type="number" name="qtyInput" value="0" min="0">
+        <label for="nameInput">Input Name</label>
+        <input class="form-input" type="text" name="nameInput" required>
+        <label for="qtyInput">Input Quantity</label>
+        <input class="form-input" type="number" name="qtyInput" value="0" min="0">
         <label for="description">Input Description</label>
-        <textarea class="form-textarea" name="description" id="description" cols="30" rows="10"></textarea>
-        <button type="submit">submit</button>
+        <textarea class="form-textarea" name="description" id="description" cols="30" rows="5"></textarea>
+        <button class="button" type="submit">submit</button>
     </form>
     <ul>
         <% itemList.forEach(item => { %>
